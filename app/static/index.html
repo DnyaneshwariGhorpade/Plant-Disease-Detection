@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Disease Diagnosis</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f0; color: #1e2a1e; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #2e7d32, #1b5e20); color: #fff; padding: 18px 24px; }
+  header h1 { font-size: 22px; }
+  header p { font-size: 13px; opacity: 0.9; }
+  main { max-width: 900px; margin: 30px auto; padding: 0 16px; display: grid; gap: 24px; }
+  .card { background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 22px; }
+  .drop { border: 2px dashed #9ccc9c; border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; transition: 0.2s; background: #f7fbf7; }
+  .drop:hover, .drop.drag { background: #e8f5e9; border-color: #2e7d32; }
+  .drop input { display: none; }
+  .drop img { max-height: 240px; max-width: 100%; border-radius: 8px; margin-top: 12px; }
+  button { background: #2e7d32; color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-size: 15px; cursor: pointer; margin-top: 14px; }
+  button:disabled { background: #a5d6a7; cursor: not-allowed; }
+  .status { margin-top: 12px; font-size: 14px; }
+  #results { display: none; }
+  h2 { font-size: 18px; margin-bottom: 6px; }
+  .meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
+  .badge { padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #fff; }
+  .badge.diseased { background: #c62828; }
+  .badge.healthy { background: #2e7d32; }
+  .badge.low { background: #f9a825; }
+  .bar { height: 10px; background: #e0e0e0; border-radius: 6px; overflow: hidden; margin: 6px 0 16px; }
+  .bar > div { height: 100%; background: #2e7d32; border-radius: 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .field { background: #f7fbf7; border-radius: 8px; padding: 10px 12px; }
+  .field strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #2e7d32; margin-bottom: 4px; }
+  .field p { font-size: 14px; line-height: 1.5; }
+  .top { background: #fff8e1; border-left: 4px solid #f9a825; padding: 10px 14px; border-radius: 6px; font-size: 14px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Plant Disease Diagnosis</h1>
+  <p>Tomato · Potato · Pepper — upload a leaf photo to detect disease and get a diagnosis</p>
+</header>
+<main>
+  <div class="card">
+    <div class="drop" id="dropzone">
+      <input type="file" id="file" accept="image/jpeg,image/png">
+      <p>Click or drop a leaf image here</p>
+      <img id="preview" alt="" hidden>
+    </div>
+    <button id="btn" disabled>Diagnose</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="card" id="results">
+    <h2 id="r-title">Result</h2>
+    <div class="meta">
+      <span class="badge" id="r-badge">DISEASED</span>
+      <span id="r-name" style="font-weight:600"></span>
+      <span id="r-conf"></span>
+    </div>
+    <div class="bar"><div id="r-bar"></div></div>
+    <div id="r-note"></div>
+    <div class="grid" id="r-fields"></div>
+  </div>
+</main>
+
+<script>
+const dropzone = document.getElementById('dropzone');
+const input = document.getElementById('file');
+const preview = document.getElementById('preview');
+const btn = document.getElementById('btn');
+const status = document.getElementById('status');
+const results = document.getElementById('results');
+
+dropzone.onclick = () => input.click();
+dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('drag'); };
+dropzone.ondragleave = () => dropzone.classList.remove('drag');
+dropzone.ondrop = (e) => {
+  e.preventDefault(); dropzone.classList.remove('drag');
+  if (e.dataTransfer.files.length) showFile(e.dataTransfer.files[0]);
+};
+input.onchange = () => { if (input.files.length) showFile(input.files[0]); };
+
+function showFile(file) {
+  if (!/^image\/(jpe?g|png)$/.test(file.type)) { status.textContent = 'Please choose a JPG or PNG image.'; return; }
+  preview.src = URL.createObjectURL(file);
+  preview.hidden = false;
+  btn.disabled = false;
+  status.textContent = '';
+}
+
+btn.onclick = async () => {
+  const file = input.files[0];
+  if (!file) return;
+  btn.disabled = true;
+  status.textContent = 'Analysing leaf...';
+  const fd = new FormData();
+  fd.append('image', file);
+  results.style.display = 'none';
+  try {
+    const res = await fetch('/predict', { method: 'POST', body: fd });
+    const body = await res.json();
+    if (!res.ok) throw new Error(body.detail || 'Server error');
+    render(body);
+    status.textContent = '';
+    btn.disabled = false;
+  } catch (err) {
+    status.textContent = 'Failed: ' + err.message;
+    btn.disabled = false;
+  }
+};
+
+function render(r) {
+  const d = r.diagnosis || {};
+  const pct = (r.top_confidence * 100).toFixed(1);
+  document.getElementById('r-title').textContent = d.healthy ? 'Healthy Plant' : 'Disease Detected';
+  const badge = document.getElementById('r-badge');
+  badge.textContent = d.healthy ? 'HEALTHY' : 'DISEASED';
+  badge.className = 'badge ' + (d.healthy ? 'healthy' : 'diseased');
+  if (!r.confident) badge.className = 'badge low';
+  document.getElementById('r-name').textContent = d.common_name || r.top_class;
+  document.getElementById('r-conf').textContent = pct + '% confidence';
+  document.getElementById('r-bar').style.width = pct + '%';
+  document.getElementById('r-bar').style.background = d.healthy ? '#2e7d32' : '#c62828';
+  const note = document.getElementById('r-note');
+  note.className = 'top';
+  note.textContent = r.confident
+    ? 'Leaf classified as: ' + r.top_class
+    : 'Low confidence (' + pct + '%). This does not look like one of the known leaves/conditions. Please retake with clearer lighting or upload a closer crop.';
+  const fields = document.getElementById('r-fields');
+  fields.innerHTML = '';
+  const items = [['Crop', d.crop], ['Symptoms', d.symptoms], ['Cause', d.cause], ['Treatment', d.treatment], ['Prevention', d.prevention]];
+  items.forEach(([label, val]) => {
+    if (!val) return;
+    const div = document.createElement('div');
+    div.className = 'field';
+    div.innerHTML = '<strong>' + label + '</strong><p>' + val + '</p>';
+    fields.appendChild(div);
+  });
+  results.style.display = 'block';
+  results.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

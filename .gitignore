@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.npz
+models/
+reports/
+data/split/
+*.h5
+*.keras
+.env
+.DS_Store

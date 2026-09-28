@@ -1,0 +1,10 @@
+tensorflow>=2.16
+keras>=3.3
+numpy
+pandas
+scikit-learn
+Pillow
+matplotlib
+fastapi
+uvicorn
+python-multipart

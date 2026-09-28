@@ -1,0 +1,137 @@
+{
+  "Pepper__bell___Bacterial_spot": {
+    "crop": "Pepper (bell)",
+    "common_name": "Bacterial spot",
+    "healthy": false,
+    "symptoms": "Dark, water-soaked spots on leaves that later turn brown with a yellow halo; spots on fruit are raised and corky; severe infection causes leaf drop and defoliation.",
+    "cause": "Bacteria (Xanthomonas campestris pv. vesicatoria), favoured by warm, humid, wet weather and spread by splashing water.",
+    "treatment": "Remove and destroy infected plants; apply copper-based bactericides or streptomycin-containing sprays early; avoid working in wet foliage.",
+    "prevention": "Use certified disease-free seed/seedlings, rotate crops 2-3 years, practise drip irrigation, and plant resistant varieties."
+  },
+  "Pepper__bell___healthy": {
+    "crop": "Pepper (bell)",
+    "common_name": "Healthy",
+    "healthy": true,
+    "symptoms": "None. Leaves are uniform green with no spots, wilting, mosaics or pest damage.",
+    "cause": "None. Plant is free from disease and pests.",
+    "treatment": "No treatment needed. Continue routine care: adequate water, balanced fertiliser and pest scouting.",
+    "prevention": "Maintain good sanitation, crop rotation and balanced nutrition to keep plants vigorous."
+  },
+  "Potato___Early_blight": {
+    "crop": "Potato",
+    "common_name": "Early blight",
+    "healthy": false,
+    "symptoms": "Brown to black concentric-ring lesions (target-board appearance) on older lower leaves; yellowing around lesions; leaves dry out and die early.",
+    "cause": "Fungus Alternaria solani, favoured by warm temperatures, high humidity and stressed/aging plants.",
+    "treatment": "Apply protectant fungicides (chlorothalonil, mancozeb) at first sign; remove infected foliage; keep tubers well irrigated to avoid stress.",
+    "prevention": "Rotate crops 2-3 years, avoid overhead irrigation, remove plant debris, and use resistant varieties."
+  },
+  "Potato___Late_blight": {
+    "crop": "Potato",
+    "common_name": "Late blight",
+    "healthy": false,
+    "symptoms": "Water-soaked grey-green spots that turn dark brown/black with a pale halo; white fuzzy growth on underside in humid conditions; tubers develop brown rotted areas.",
+    "cause": "Oomycete Phytophthora infestans, the cause of the Irish potato famine; spreads extremely fast in cool, wet weather.",
+    "treatment": "Act fast: apply systemic+contact fungicides (mancozeb + metalaxyl/mefenoxam); destroy infected plants to stop spore spread; harvest and dispose diseased tubers.",
+    "prevention": "Use certified seed, resistant varieties, destroy cull piles and volunteer plants, and apply preventive fungicide programmes in wet seasons."
+  },
+  "Potato___healthy": {
+    "crop": "Potato",
+    "common_name": "Healthy",
+    "healthy": true,
+    "symptoms": "None. Leaves uniform green with no lesions, necrosis, wilting or fungal growth.",
+    "cause": "None.",
+    "treatment": "No treatment needed. Maintain watering, fertilisation and routine scouting.",
+    "prevention": "Crop rotation, certified seed, balanced nutrition and timely irrigation."
+  },
+  "Tomato_Bacterial_spot": {
+    "crop": "Tomato",
+    "common_name": "Bacterial spot",
+    "healthy": false,
+    "symptoms": "Small dark water-soaked spots on leaves, stems and fruit; leaf spots may form yellow halos and enlarge; heavy infection causes leaf drop and spots on green fruit.",
+    "cause": "Bacteria Xanthomonas spp., spread by water splash, wind-driven rain and contaminated tools.",
+    "treatment": "Spray copper-based bactericides early; remove severely infected plants; avoid overhead watering.",
+    "prevention": "Disease-free seed, crop rotation, drip irrigation, sanitation of stakes and tools, resistant varieties."
+  },
+  "Tomato_Early_blight": {
+    "crop": "Tomato",
+    "common_name": "Early blight",
+    "healthy": false,
+    "symptoms": "Dark brown spots with characteristic concentric rings (bull's-eye pattern) on lower leaves; oldest leaves yellow and die first; stems and fruit may develop lesions.",
+    "cause": "Fungus Alternaria solani, thrives in warm, humid conditions and on stressed or nutrient-deficient plants.",
+    "treatment": "Remove infected lower leaves; apply fungicides (chlorothalonil, mancozeb, copper) preventatively or at first symptoms; apply mulch to reduce splash.",
+    "prevention": "Rotate crops, avoid overhead irrigation, stake/prune for airflow, and maintain balanced fertilisation."
+  },
+  "Tomato_Late_blight": {
+    "crop": "Tomato",
+    "common_name": "Late blight",
+    "healthy": false,
+    "symptoms": "Large greasy olive-green or grey water-soaked lesions on leaves; white mould on leaf undersides in humid weather; dark firm lesions on stems and fruit; rapid plant collapse.",
+    "cause": "Oomycete Phytophthora infestans, highly destructive; favoured by cool nights, warm days and high moisture.",
+    "treatment": "Destroy infected plants immediately to prevent spread; apply fungicides (copper, mancozeb, chlorothalonil) aggressively; do not compost infected material.",
+    "prevention": "Resistant varieties, crop rotation, avoid overhead irrigation, good airflow, and preventive fungicide schedule in wet seasons."
+  },
+  "Tomato_Leaf_Mold": {
+    "crop": "Tomato",
+    "common_name": "Leaf mold",
+    "healthy": false,
+    "symptoms": "Pale yellow-green spots on upper leaf surface; fluffy olive-brown to purplish mould on the lower surface; leaves curl, wither and drop; mainly affects greenhouse tomatoes.",
+    "cause": "Fungus Passalora fulva (Cladosporium fulvum), favoured by high humidity (85%+) and poor ventilation.",
+    "treatment": "Improve airflow and reduce humidity; apply protective fungicides (chlorothalonil, mancozeb, copper); remove infected leaves.",
+    "prevention": "Space plants wider, prune for ventilation, water at base, manage greenhouse humidity, use resistant cultivars."
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "crop": "Tomato",
+    "common_name": "Septoria leaf spot",
+    "healthy": false,
+    "symptoms": "Numerous small circular spots with grey-tan centres and dark brown rims on oldest leaves; leaves yellow, then brown and drop; works upward from the bottom.",
+    "cause": "Fungus Septoria lycopersici, spread by rain splash; renders plants weak and reduces yield when defoliation is severe.",
+    "treatment": "Remove infected lower leaves and debris; apply chlorothalonil, mancozeb or copper sprays; stake and mulch to reduce splash.",
+    "prevention": "Crop rotation (avoid solanaceous hosts), overhead-water avoidance, removal of debris, resistant varieties."
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "crop": "Tomato",
+    "common_name": "Two-spotted spider mite",
+    "healthy": false,
+    "symptoms": "Fine yellow-white stippling/speckling on leaves; fine webbing on undersides and between stems; leaves bronze, dry and drop; mites are tiny moving dots, worse in hot dry weather.",
+    "cause": "Two-spotted spider mite (Tetranychus urticae), a tiny arachnid pest that multiplies rapidly in heat and drought.",
+    "treatment": "Wash plants with water to knock mites down; apply miticides (abamectin, spiromesifen) or insecticidal soap/neem; release predatory mites (Phytoseiulus persimilis).",
+    "prevention": "Maintain humidity, avoid drought stress, inspect undersides regularly, control weeds that host mites."
+  },
+  "Tomato__Target_Spot": {
+    "crop": "Tomato",
+    "common_name": "Target spot",
+    "healthy": false,
+    "symptoms": "Circular necrotic spots with distinct concentric rings (target-like) on leaves, stems and fruit; fruit spots can be sunken with dark halos; severe leaf drop in wet conditions.",
+    "cause": "Fungus Corynespora cassiicola, favoured by warm temperature and high humidity with prolonged leaf wetness.",
+    "treatment": "Apply fungicides (azoxystrobin, chlorothalonil, mancozeb) at first symptoms; improve airflow and remove infected debris.",
+    "prevention": "Resistant/tolerant varieties, drip irrigation, crop rotation, avoid dense planting, preventive fungicide in high-risk weather."
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "crop": "Tomato",
+    "common_name": "Tomato mosaic virus (ToMV)",
+    "healthy": false,
+    "symptoms": "Mottled light-and-dark green mosaic pattern on leaves; leaves may crinkle, curl or become fern-like; stunted growth and reduced fruit set; fruits may show uneven ripening.",
+    "cause": "Tomato mosaic virus, transmitted mechanically via hands, tools, and contaminated seed/clothing (not by insects).",
+    "treatment": "No cure; remove and destroy infected plants; disinfect hands and tools with milk or bleach solution; do not replant solanaceous crops immediately.",
+    "prevention": "Use virus-free seed, disinfect tools/benches, avoid touching plants when wet, control weeds, use resistant cultivars."
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "crop": "Tomato",
+    "common_name": "Tomato yellow leaf curl virus (TYLCV)",
+    "healthy": false,
+    "symptoms": "Leaves curl upward and inward, yellowing at edges and between veins; plants severely stunted; few or no flowers/fruits; spread by whiteflies (Bemisia tabaci).",
+    "cause": "Tomato yellow leaf curl virus, a begomovirus transmitted by the silverleaf whitefly.",
+    "treatment": "No cure for infected plants; remove and destroy affected plants; control the whitefly vector with yellow sticky traps and targeted insecticides.",
+    "prevention": "Protect seedlings with insect netting, use resistant varieties, control whiteflies early, remove alternate weed hosts, rogue infected plants promptly."
+  },
+  "Tomato_healthy": {
+    "crop": "Tomato",
+    "common_name": "Healthy",
+    "healthy": true,
+    "symptoms": "None. Uniform green leaves without spots, discolouration, curling, mould or pest damage.",
+    "cause": "None.",
+    "treatment": "No treatment needed. Continue regular watering, fertilisation and monitoring.",
+    "prevention": "Good sanitation, rotation, balanced feeding, proper spacing and routine scouting."
+  }
+}
