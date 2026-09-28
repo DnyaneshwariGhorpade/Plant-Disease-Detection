@@ -46,3 +46,6 @@ async def predict_leaf(image: UploadFile = File(...)):
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {exc}")
     return result
+
+
+#..............
